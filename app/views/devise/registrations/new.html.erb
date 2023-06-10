@@ -1,0 +1,49 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+<main style="
+    background-color: grey;
+">
+<div class="container" style="background-color: grey;">
+
+<div class="row main-form" style="background-color: grey;">
+    <form class="" method="post" action="#">
+  <div class="badge bg-primary text-wrap" style="width: 9rem;">
+    <h3>Sing Up</h3>
+  </div>
+ 
+ <div class="form-group"></div>
+ <div class="cols-sm-10"></div>
+ <div class="input-group"></div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+  <%= f.label :phone %><br />
+  <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Sign up", class:"btn btn-outline-primary" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links"%>
+
+
+      
