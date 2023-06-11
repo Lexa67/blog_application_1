@@ -31,5 +31,3 @@ User.create(email: '3aj4ik504@gmail.com',
                    post_id: post.id)
   end
 end
-
-11111
