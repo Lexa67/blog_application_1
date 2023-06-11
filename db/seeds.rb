@@ -14,11 +14,6 @@ User.create(email: 'john@doe.com',
             password: 'password',
             password_confirmation: 'password',
             name: 'John Doe')
-User.create(email: '3aj4ik504@gmail.com',
-            password: 'password',
-            password_confirmation: 'password',
-            name: 'Alex',
-            role: User.roles[:super_user])
 
 10.times do |x|
   post = Post.create(title: "Title #{x}",
