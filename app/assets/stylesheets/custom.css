@@ -57,7 +57,7 @@ span.input-group-addon i {
 }
 
 .body-color {
-  background-color: #7c8fa3;
+  background-color: white;
 }
 .btn-link-red {
   color: red;
@@ -71,5 +71,8 @@ span.input-group-addon i {
   font-size: 20px;
   background-color: #fff;
   color: blue;
+}
+.colorrr {
+  color: #212529;
 }
 </style>

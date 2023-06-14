@@ -18,5 +18,3 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 end
-
-
