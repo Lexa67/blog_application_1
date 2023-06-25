@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   # /posts/1/comments/4
   resources :posts do
+     patch 'update_status', on: :member
     resources :comments
   end
   

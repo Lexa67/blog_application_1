@@ -11,6 +11,11 @@
     post: @post, 
     comment: @post.comments.build,
     submit_label: "Reply" %>
+    <% if @post.status == "open" && current_user.role == "admin" %>
+      <%= link_to "Closed post", update_status_post_path(status: "closed") %>
+    <% elsif @post.status == "closed" && current_user.role == "admin" %>
+      <%= link_to "Open post", update_status_post_path(status: "open") %>
+    <% end %>
   <% @comments.each do |comment| %>
     <%= render 'comments/comment', 
     post: @post, 

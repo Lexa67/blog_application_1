@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy update_status]
   before_action :authenticate_user!, except: %i[show index]
   # GET /posts or /posts.json
   def index
@@ -21,10 +21,20 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit; end
 
+  def update_status
+    if @post.update(status: params[:status])
+      redirect_to @post, notice: 'Статус успешно обновлен.'
+    else
+      redirect_to @post, alert: 'Не удалось обновить статус.'
+    end
+  end
+
+
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    @post.status = "open"
 
     respond_to do |format|
       if @post.save
