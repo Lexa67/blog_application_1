@@ -32,7 +32,6 @@
       <% elsif post.comments.where(user_id: current_user.id).count >= 3 && current_user.role != "admin" %>
       <div class="alert alert-danger" role="alert">
         Вы превысили количетсво доступных комментариев. Вы можете купить права супервользователя для расширенных возможностей!
-      <button type="button" class="btn btn-lg btn-success" title="Нажмите сюда для покупки прав суперюзера">Купить</button>
       </div>
     <% else %>
       <%= f.rich_text_area :body %>
