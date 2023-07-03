@@ -1,4 +1,7 @@
 <div class="container">
-  <h1 class="text-center">Adminstrator</h1>
-  <%= render 'admin/nav_links' %>
+  <h1 class="text-center">Adminstrator page</h1>
+    <% @posts.each do |post| %>
+  <h1><%= render post %> </h1>
+    <%= link_to "Show this post", post, class: "btn btn-info" %>
+  <% end %>
 </div>

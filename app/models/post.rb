@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   has_noticed_notifications model_name: 'Notification'
   has_many :notifications, through: :user
 
-  attribute :status, :string, default: "open"
-  enum status: [:open, :close]
-  
+  enum status: %i[open closed], _default: "open"
+  enum status_post: %i[aproved not_aproved], _default: "aproved"
+
 end

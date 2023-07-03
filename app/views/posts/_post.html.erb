@@ -1,8 +1,13 @@
 <div id="<%= dom_id post %>">
-  <h2><%= post.title %></h2>
-  <h4>posted by <%= link_to post.user.name, user_path(post.user) %></h4>
-  <h6><%= pluralize(post.views, "view") %></h6>
-  <div>
-    <%= post.body %>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <h3><u><%= post.title %></u></h3>
+        <h6><%= pluralize(post.views, "view") %></h6>
+        <footer class="blockquote-footer">
+          <cite title="Source Title">posted by <%=link_to post.user.name, user_path(post.user) %></cite>
+          <%= post.body %>
+          <p style="text-align: right;"><b>Status: <%= post.status_post %></b></p>
+        </footer>
+    </blockquote>
   </div>
 </div>

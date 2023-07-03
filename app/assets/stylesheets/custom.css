@@ -75,4 +75,37 @@ span.input-group-addon i {
 .colorrr {
   color: #212529;
 }
+
+.user_color {
+  color: #030093;
+  font-size: 30px;
+  font-family: serif;
+  font-weight: 900;
+}
+
+
+
+
+.card-header {
+  background-color: #4e96ff;
+}
+
+.card-body {
+  border: 1px solid #b2b6b9;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+.card-editor {
+  background-color: #ffc107;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+
 </style>

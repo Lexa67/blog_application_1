@@ -1,6 +1,8 @@
 class AdminController < ApplicationController
 
-  def index; end
+  def index
+    @posts = Post.where(status_post: "not_aproved").order(created_at: :desc)
+  end
 
 
   def posts

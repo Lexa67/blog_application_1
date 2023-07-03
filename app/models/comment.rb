@@ -12,7 +12,6 @@ class Comment < ApplicationRecord
   def validate_comment_count
     max_comments_per_user = 3 # Максимальное количество комментариев для каждого пользователя
     if user.comments.where(post_id: post.id).count >= max_comments_per_user
-      errors.add(:base, "Достигнуто максимальное количество комментариев для данного пользователя")
     end
   end
 

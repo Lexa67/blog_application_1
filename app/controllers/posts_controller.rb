@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy update_status]
+  before_action :set_post, only: %i[show edit update destroy update_status update_status_post]
   before_action :authenticate_user!, except: %i[show index]
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.where(status_post: "aproved").order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -29,16 +29,23 @@ class PostsController < ApplicationController
     end
   end
 
+   def update_status_post
+    if @post.update(status_post: params[:status_post])
+      redirect_to @post, notice: 'Статус поста успешно обновлен.'
+    else
+      redirect_to @post, alert: 'Не удалось обновить статус поста.'
+    end
+  end
+
 
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    @post.status = "open"
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to post_url(@post), notice: 'Post was successfully created.' }
+        format.html { redirect_to post_url(@post), notice: 'Пост сохранен' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -79,7 +86,7 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :status, :status_post)
   end
 
   def mark_notifications_as_read

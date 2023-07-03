@@ -10,26 +10,27 @@
     </div>
   <% end %>
   <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <%= form.label :email, class: "user_color", style: "display: block" %>
+  <%= form.text_field :email, class: "form-control", id: "exampleInputEmail1" %>
   </div>
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class: "user_color", style: "display: block" %>
+    <%= form.text_field :name, class: "form-control", id: "exampleInputname1" %>
   </div>
   <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+    <%= form.label :phone, class: "user_color", style: "display: block" %>
+    <%= form.text_field :phone, class: "form-control", id: "exampleInputPhone1" %>
   </div>
   <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password %>
-  </div>
-  <div>
-    <%= form.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+    <%= form.label :password,  class: "user_color", style: "display: block" %>
+    <%= form.password_field :password, class: "form-control", id: "exampleInputPassword11" %>
   </div>
   <br>
+  <div class="btn-group">
+  <%= form.select(:role, User.roles.keys.map {|role| [role.titleize,role]}, {}, class: "btn btn-success dropdown-toggle", "data-bs-toggle": "dropdown", "aria-expanded": "false") %>
+  </div>
+  <br><br>
   <div>
-    <%= form.submit "Update", class: "btn btn-primary btn-sm" %>
+    <%= form.submit "Update", class: "btn btn-primary" %>
   </div>
 <% end %>

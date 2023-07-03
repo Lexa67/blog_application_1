@@ -1,24 +1,55 @@
 <div class="container">
   <%= render @post %>
-  <div>
-    <%= link_to "Edit this post", edit_post_path(@post) %> |
-    <%= link_to "Back to posts", posts_path %>
-    <%= button_to "Destroy this post", @post, method: :delete %>
+  <br>
+  <div class="button-row">
+    <%= link_to "Edit this post", edit_post_path, class:"btn btn-warning" %>
+    <%= link_to "Back to posts", posts_path, class: "btn btn-info" %>
+    <%= button_to "Delete this post", @post, method: :delete, class: "btn btn-danger" %>
   </div>
 </div>
+<br>
 <div class="container">
-    <%= render 'comments/form', 
-    post: @post, 
-    comment: @post.comments.build,
-    submit_label: "Reply" %>
-    <% if @post.status == "open" && current_user.role == "admin" %>
-      <%= link_to "Closed post", update_status_post_path(status: "closed") %>
-    <% elsif @post.status == "closed" && current_user.role == "admin" %>
-      <%= link_to "Open post", update_status_post_path(status: "open") %>
+  <% if current_user != nil %>
+    <% if current_user.role == "admin" %>
+      <% if @post.status == "open" && @post.status_post == "aproved" %>
+        <%= link_to "Disaprove post", update_status_post_post_path(status_post: "not_aproved"), class: "btn btn-outline-dark" %>
+        <%= link_to "Closed post", update_status_post_path(status: "closed"), class: "btn btn-dark" %>
+          <%= render 'comments/form', 
+            post: @post, 
+            comment: @post.comments.build,
+            submit_label: "Reply" %>
+      <% elsif @post.status == "open" && @post.status_post == "not_aproved" %>
+        <%= link_to "Aprove post", update_status_post_post_path(status_post: "aproved"), class: "btn btn-outline-success" %>
+        <%= link_to "Closed post", update_status_post_path(status: "closed"), class: "btn btn-dark" %>
+          <%= render 'comments/form', 
+            post: @post, 
+            comment: @post.comments.build,
+            submit_label: "Reply" %>
+      <% elsif @post.status == "closed"%>
+        <%= link_to "Open post", update_status_post_path(status: "open"), class: "btn btn-success" %>
+          <%= render 'comments/form', 
+            post: @post, 
+            comment: @post.comments.build,
+            submit_label: "Reply" %>
+      <% end %>
+    <% elsif current_user.role == "user" || current_user.role == "moderator" %>
+      <% if @post.status == "open" %>
+          <%= render 'comments/form', 
+            post: @post, 
+            comment: @post.comments.build,
+            submit_label: "Reply" %>
+      <% else %>
+        <%= "Пост закрыт!" %>
+      <% end %>
+    <% end %>
+    <% else %>
+      <h1 style="color: red;">
+        Ввойдите в аккаунт!!!!!
+      </h1>
     <% end %>
   <% @comments.each do |comment| %>
     <%= render 'comments/comment', 
     post: @post, 
     comment: comment %>
-  <% end %>
+    <% end %>      
 </div>

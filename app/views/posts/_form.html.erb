@@ -10,14 +10,14 @@
     </div>
   <% end %>
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: "user_color", style: "display: block" %>
+    <%= form.text_field :title, class: "form-control", id: "exampleInputTitle" %>
   </div>
   <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.rich_text_area :body %>
+    <%= form.label :body, class: "user_color", style: "display: block" %>
+    <%= form.rich_text_area :body, class: "form-control", id: "exampleInputBody" %>
   </div>
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success"%>
   </div>
 <% end %>

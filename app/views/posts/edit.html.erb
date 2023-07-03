@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>Editing post</h1>
+   <div class="card">
+      <div class="card-editor"><h1><b>Editing post</b></h1></div>
   <%= render "form", post: @post %>
   <br>
-  <div>
-    <%= link_to "Back to users", ys_path %>
+    <%= link_to "Back to posts", posts_path, class: "btn btn-info" %>
   </div>
 </div>

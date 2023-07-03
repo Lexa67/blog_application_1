@@ -1,16 +1,19 @@
 <p style="color: green"><%= notice %></p>
- </div>
-  <%= link_to "New post", new_post_path %>
-</div>
 <div class="container">
-  <h1>Posts</h1>
-  <div id="posts">
-    <% @posts.each do |post| %>
-      <%= render post %>
-      <p>
-        <%= link_to "Show this post", post %>
-      </p>
-    <% end %>
-  </div>
-  <%= link_to "New post", new_post_path %>
+  <%= link_to "New post", new_post_path, class:"btn btn-primary" %>
+  <br>
+  <br>
+    <div class="card">
+      <div class="card-header"><h1>Posts</h1>
+      </div>
+    <div class="card-body" id="posts">
+      <% @posts.each do |post| %>
+        <%= render post %>
+        <p>
+          <%= link_to "Show this post", post, class: "btn btn-info" %>
+        </p>
+      <% end %>
+    </div>
+    <%= link_to "New post", new_post_path, class:"btn btn-primary" %>
+    </div>
 </div>
